@@ -19,10 +19,6 @@ Article.prototype.toHtml = function() {
   var source = $('#1st-handlebars-template').html();
   var templates = Handlebars.compile(source);
 
-  Article.forEach(function(article) {
-      $('#articles').append(templates(article));
-  });
-
   ////we grab the script tag and put .html on it
   ////call handlebars.compile
   ///this creates the html string
@@ -38,7 +34,12 @@ Article.prototype.toHtml = function() {
 
   // TODO: Use the function that Handlebars gave you to return your filled-in html template for THIS article.
 ////call template function
+
 };
+
+Article.forEach(function(article) {
+    $('#articles').append(templates(article));
+});
 
 rawData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
